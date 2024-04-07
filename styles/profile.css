@@ -1,0 +1,52 @@
+.profile {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  gap: 30px;
+}
+
+.profile__photo {
+  border-radius: 500px;
+  max-width: 120px;
+}
+
+.profile__editor {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__data {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.profile__name {
+  margin: 0;
+}
+
+.profile__edit {
+  width: 24px;
+  height: 24px;
+  border-radius: 1px;
+  background-color: #000;
+  color: #fff;
+  border-style: solid;
+  border-color: #fff;
+}
+
+.profile__button-add {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile__add {
+  border-radius: 2px;
+  width: 150px;
+  height: 50px;
+  background-color: #000;
+  border-style: solid;
+  border-color: #fff;
+  padding: 0;
+}
