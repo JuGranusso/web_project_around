@@ -1,0 +1,41 @@
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+  padding-top: 50px;
+}
+
+.photo-grid__card {
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+}
+
+.photo-grid__photo {
+  width: 100%;
+}
+
+.photo-grid__photo img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.photo-grid__discription {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-left: 21px;
+  padding-right: 15px;
+}
+
+.photo-grid__name {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  text-align: left;
+}
+
+.photo-grid__like {
+  margin-left: auto;
+}
