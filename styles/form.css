@@ -11,6 +11,10 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.form_visible {
+  visibility: visible;
+}
+
 .form__card {
   background-color: #fff;
   width: 430px;
