@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="As cidades natais de alguns funcionários do TripleTen"
+    />
+    <meta name="keywords" content="homeland, funcionários, tripleten" />
+    <meta name="author" content="JulianeGC" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EUA a Fora</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="header">
+        <img class="header__logo" src="assets/logo.svg" alt="logo" />
+      </header>
+      <main class="content">
+        <section class="profile">
+          <img
+            class="profile__photo"
+            src="assets/cousteau.png"
+            alt="Foto de perfil de Jacques Cousteau"
+          />
+          <div class="profile__editor">
+            <div class="profile__data">
+              <h1 class="profile__name">Jacques Cousteau</h1>
+              <button class="profile__edit">
+                <img
+                  src="assets/editbutton.svg"
+                  alt="botão para editar nome de perfil"
+                />
+              </button>
+            </div>
+            <p class="profile__subtitle">Explorador</p>
+          </div>
+          <div class="profile__button-add">
+            <button class="profile__add">
+              <img
+                src="assets/buttonadd.svg"
+                alt="botão para adicionar perfil"
+              />
+            </button>
+          </div>
+        </section>
+        <section class="photo-grid">
+          <div class="photo-grid__card">
+            <img
+              class="photo-grid__photo"
+              src="assets/yosemite.png"
+              alt="Vale de Yosemite"
+            />
+            <div class="photo-grid__discription">
+              <p class="photo-grid__name">Vale do Yosemite</p>
+              <img
+                class="photo-grid__like"
+                src="assets/like.svg"
+                alt="botão para curtir"
+              />
+            </div>
+          </div>
+
+          <div class="photo-grid__card">
+            <img
+              class="photo-grid__photo"
+              src="assets/lagolouise.png"
+              alt="Lago Louise"
+            />
+            <div class="photo-grid__discription">
+              <p class="photo-grid__name">Lago Louise</p>
+              <img
+                class="photo-grid__like"
+                src="assets/like.svg"
+                alt="botão para curtir"
+              />
+            </div>
+          </div>
+
+          <div class="photo-grid__card">
+            <img
+              class="photo-grid__photo"
+              src="assets/montanhascare.png"
+              alt="Montanhas Care"
+            />
+            <div class="photo-grid__discription">
+              <p class="photo-grid__name">Montanhas Carecas</p>
+              <img
+                class="photo-grid__like"
+                src="assets/like.svg"
+                alt="botão para curtir"
+              />
+            </div>
+          </div>
+
+          <div class="photo-grid__card">
+            <img
+              class="photo-grid__photo"
+              src="assets/latemar.png"
+              alt="Latemar"
+            />
+            <div class="photo-grid__discription">
+              <p class="photo-grid__name">Latemar</p>
+              <img
+                class="photo-grid__like"
+                src="assets/like.svg"
+                alt="botão para curtir"
+              />
+            </div>
+          </div>
+
+          <div class="photo-grid__card">
+            <img
+              class="photo-grid__photo"
+              src="assets/parquenacional.png"
+              alt="Parque Nacional"
+            />
+            <div class="photo-grid__discription">
+              <p class="photo-grid__name">Parque Nacional da Vanoise</p>
+              <img
+                class="photo-grid__like"
+                src="assets/like.svg"
+                alt="botão para curtir"
+              />
+            </div>
+          </div>
+
+          <div class="photo-grid__card">
+            <img
+              class="photo-grid__photo"
+              src="assets/lagodibraies.png"
+              alt="Lago di Braies"
+            />
+            <div class="photo-grid__discription">
+              <p class="photo-grid__name">Lago di Braies</p>
+              <img
+                class="photo-grid__like"
+                src="assets/like.svg"
+                alt="botão para curtir"
+              />
+            </div>
+          </div>
+        </section>
+        <div class="form">
+          <div class="form__card">
+            <button class="form__exit">
+              <img src="assets/exit.svg" alt="Botão Sair" />
+            </button>
+
+            <form class="form__body">
+              <p class="form__label">Editar perfil</p>
+              <div class="form__data">
+                <input
+                  class="form__input"
+                  type="text"
+                  id="nome"
+                  name="nome"
+                  placeholder="Jacques Cousteau"
+                />
+
+                <input
+                  class="form__input"
+                  type="text"
+                  id="profissao"
+                  name="profissao"
+                  placeholder="Explorador"
+                />
+              </div>
+              <button class="form__button" type="submit">Salvar</button>
+            </form>
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <h4 class="footer__copyright">© 2024 Around The U.S.</h4>
+      </footer>
+    </div>
+    <script src="./scripts/form.js"></script>
+  </body>
+</html>
