@@ -172,12 +172,42 @@
             </form>
           </div>
         </div>
+        <div class="card-form">
+          <div class="card-form__card">
+            <button class="card-form__exit">
+              <img src="assets/exit.svg" alt="Botão Sair" />
+            </button>
+
+            <form class="card-form__body">
+              <p class="card-form__label">Novo Local</p>
+              <div class="card-form__data">
+                <input
+                  class="card-form__input"
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="Título"
+                />
+
+                <input
+                  class="card-form__input"
+                  type="text"
+                  id="link"
+                  name="link"
+                  placeholder="Link de imagem"
+                />
+              </div>
+              <button class="card-form__button" type="submit">Criar</button>
+            </form>
+          </div>
+        </div>
       </main>
       <footer class="footer">
         <h4 class="footer__copyright">© 2024 Around The U.S.</h4>
       </footer>
     </div>
     <script src="./scripts/form.js"></script>
+    <script src="./scripts/card-form.js"></script>
     <script src="./scripts/like-button.js"></script>
   </body>
 </html>
