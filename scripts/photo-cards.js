@@ -48,6 +48,12 @@ function createNewCard(name, link) {
       }
     });
 
+  newCard
+    .querySelector(".photo-grid__delete")
+    .addEventListener("click", (event) => {
+      event.target.parentElement.remove();
+    });
+
   photoGrid.append(newCard);
 }
 
