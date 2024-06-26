@@ -46,103 +46,9 @@
             </button>
           </div>
         </section>
-        <section class="photo-grid">
-          <div class="photo-grid__card">
-            <img
-              class="photo-grid__photo"
-              src="assets/yosemite.png"
-              alt="Vale de Yosemite"
-            />
-            <div class="photo-grid__discription">
-              <p class="photo-grid__name">Vale do Yosemite</p>
-              <img
-                class="photo-grid__like"
-                src="assets/like.svg"
-                alt="botão para curtir"
-              />
-            </div>
-          </div>
 
-          <div class="photo-grid__card">
-            <img
-              class="photo-grid__photo"
-              src="assets/lagolouise.png"
-              alt="Lago Louise"
-            />
-            <div class="photo-grid__discription">
-              <p class="photo-grid__name">Lago Louise</p>
-              <img
-                class="photo-grid__like"
-                src="assets/like.svg"
-                alt="botão para curtir"
-              />
-            </div>
-          </div>
+        <section class="photo-grid"></section>
 
-          <div class="photo-grid__card">
-            <img
-              class="photo-grid__photo"
-              src="assets/montanhascare.png"
-              alt="Montanhas Care"
-            />
-            <div class="photo-grid__discription">
-              <p class="photo-grid__name">Montanhas Carecas</p>
-              <img
-                class="photo-grid__like"
-                src="assets/like.svg"
-                alt="botão para curtir"
-              />
-            </div>
-          </div>
-
-          <div class="photo-grid__card">
-            <img
-              class="photo-grid__photo"
-              src="assets/latemar.png"
-              alt="Latemar"
-            />
-            <div class="photo-grid__discription">
-              <p class="photo-grid__name">Latemar</p>
-              <img
-                class="photo-grid__like"
-                src="assets/like.svg"
-                alt="botão para curtir"
-              />
-            </div>
-          </div>
-
-          <div class="photo-grid__card">
-            <img
-              class="photo-grid__photo"
-              src="assets/parquenacional.png"
-              alt="Parque Nacional"
-            />
-            <div class="photo-grid__discription">
-              <p class="photo-grid__name">Parque Nacional da Vanoise</p>
-              <img
-                class="photo-grid__like"
-                src="assets/like.svg"
-                alt="botão para curtir"
-              />
-            </div>
-          </div>
-
-          <div class="photo-grid__card">
-            <img
-              class="photo-grid__photo"
-              src="assets/lagodibraies.png"
-              alt="Lago di Braies"
-            />
-            <div class="photo-grid__discription">
-              <p class="photo-grid__name">Lago di Braies</p>
-              <img
-                class="photo-grid__like"
-                src="assets/like.svg"
-                alt="botão para curtir"
-              />
-            </div>
-          </div>
-        </section>
         <div class="form">
           <div class="form__card">
             <button class="form__exit">
@@ -206,8 +112,22 @@
         <h4 class="footer__copyright">© 2024 Around The U.S.</h4>
       </footer>
     </div>
+    <template id="grid-card_template">
+      <div class="photo-grid__card">
+        <img class="photo-grid__photo" src="" alt="" />
+        <div class="photo-grid__discription">
+          <p class="photo-grid__name"></p>
+          <img
+            class="photo-grid__like"
+            src="assets/like.svg"
+            alt="botão para curtir"
+          />
+        </div>
+      </div>
+    </template>
+
+    <script src="./scripts/photo-cards.js"></script>
     <script src="./scripts/form.js"></script>
     <script src="./scripts/card-form.js"></script>
-    <script src="./scripts/like-button.js"></script>
   </body>
 </html>

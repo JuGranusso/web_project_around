@@ -14,7 +14,8 @@
 }
 
 .photo-grid__photo {
-  width: 100%;
+  width: 282px;
+  height: 282px;
 }
 
 .photo-grid__photo img {
