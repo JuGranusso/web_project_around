@@ -54,6 +54,10 @@ function createNewCard(name, link) {
       event.target.parentElement.remove();
     });
 
+  newCard.querySelector(".photo-grid__photo").addEventListener("click", () => {
+    openPopup(name, link);
+  });
+
   photoGrid.append(newCard);
 }
 

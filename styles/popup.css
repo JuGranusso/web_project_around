@@ -1,0 +1,46 @@
+.popup {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup_visible {
+  visibility: visible;
+}
+
+.popup__container {
+  position: relative;
+}
+
+.popup__exit {
+  position: absolute;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  width: 40px;
+  height: 40px;
+  top: -40px;
+  right: -35px;
+}
+
+.popup__exit:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.popup__photo {
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
+.popup__caption {
+  color: white;
+  font-size: 12px;
+  line-height: 14.52px;
+}
