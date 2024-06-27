@@ -58,7 +58,7 @@ function createNewCard(name, link) {
     openPopup(name, link);
   });
 
-  photoGrid.append(newCard);
+  photoGrid.prepend(newCard);
 }
 
 initialCards.forEach((initialCard) =>
