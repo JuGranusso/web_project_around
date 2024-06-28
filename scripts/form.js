@@ -1,14 +1,14 @@
-let formBodyElement = document.querySelector(".form__body");
-let formElement = document.querySelector(".form");
+const formBodyElement = document.querySelector(".form__body");
+const formElement = document.querySelector(".form");
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
-  let nameInput = document.querySelector("#nome");
-  let jobInput = document.querySelector("#profissao");
+  const nameInput = document.querySelector("#nome");
+  const jobInput = document.querySelector("#profissao");
 
-  let profileName = document.querySelector(".profile__name");
-  let profileSubtitle = document.querySelector(".profile__subtitle");
+  const profileName = document.querySelector(".profile__name");
+  const profileSubtitle = document.querySelector(".profile__subtitle");
 
   if (nameInput.value !== "") {
     profileName.textContent = nameInput.value;
@@ -23,14 +23,14 @@ function handleProfileFormSubmit(evt) {
 
 formBodyElement.addEventListener("submit", handleProfileFormSubmit);
 
-let editButtonElement = document.querySelector(".profile__edit");
+const editButtonElement = document.querySelector(".profile__edit");
 
 function handleEditButtonClick(evt) {
-  let nameInput = document.querySelector("#nome");
-  let jobInput = document.querySelector("#profissao");
+  const nameInput = document.querySelector("#nome");
+  const jobInput = document.querySelector("#profissao");
 
-  let profileName = document.querySelector(".profile__name");
-  let profileSubtitle = document.querySelector(".profile__subtitle");
+  const profileName = document.querySelector(".profile__name");
+  const profileSubtitle = document.querySelector(".profile__subtitle");
 
   nameInput.value = profileName.textContent;
   jobInput.value = profileSubtitle.textContent;
@@ -39,7 +39,7 @@ function handleEditButtonClick(evt) {
 }
 editButtonElement.addEventListener("click", handleEditButtonClick);
 
-let exitButtonElement = document.querySelector(".form__exit");
+const exitButtonElement = document.querySelector(".form__exit");
 
 function handleExitButtonClick(evt) {
   formElement.classList.remove("form_visible");
