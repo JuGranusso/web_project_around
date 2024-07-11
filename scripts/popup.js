@@ -2,7 +2,6 @@ const popupElement = document.querySelector(".popup");
 const popupExit = document.querySelector(".popup__exit");
 
 function openPopup(name, link) {
-  console.log("sduahsud");
   const popupPhoto = document.querySelector(".popup__photo");
   popupPhoto.src = link;
   popupPhoto.alt = name;

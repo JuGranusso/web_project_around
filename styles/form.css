@@ -73,6 +73,10 @@
   color: #000;
 }
 
+.form__input_invalid {
+  border-color: red;
+}
+
 .form__button {
   margin-top: 48px;
   margin-bottom: 36.51px;
@@ -91,6 +95,15 @@
 .form__button:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+.form__button_inactive {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  user-select: none;
 }
 
 @media screen and (max-width: 768px) {

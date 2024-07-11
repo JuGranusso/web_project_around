@@ -64,7 +64,11 @@
                   id="nome"
                   name="nome"
                   placeholder="Jacques Cousteau"
+                  minlength="2"
+                  maxlength="40"
+                  required
                 />
+                <span class="form__error nome-error"></span>
 
                 <input
                   class="form__input"
@@ -72,7 +76,11 @@
                   id="profissao"
                   name="profissao"
                   placeholder="Explorador"
+                  minlength="2"
+                  maxlength="200"
+                  required
                 />
+                <span class="form__error profissao-error"></span>
               </div>
               <button class="form__button" type="submit">Salvar</button>
             </form>
@@ -93,15 +101,21 @@
                   id="title"
                   name="title"
                   placeholder="Título"
+                  minlength="2"
+                  maxlength="30"
+                  required
                 />
+                <span class="card-form__error title-error"></span>
 
                 <input
                   class="card-form__input"
-                  type="text"
+                  type="url"
                   id="link"
                   name="link"
                   placeholder="Link de imagem"
+                  required
                 />
+                <span class="card-form__error link-error"></span>
               </div>
               <button class="card-form__button" type="submit">Criar</button>
             </form>
@@ -142,6 +156,7 @@
       </div>
     </template>
 
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/popup.js"></script>
     <script src="./scripts/photo-cards.js"></script>
     <script src="./scripts/form.js"></script>

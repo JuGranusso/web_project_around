@@ -1,6 +1,15 @@
 const formBodyElement = document.querySelector(".form__body");
 const formElement = document.querySelector(".form");
 
+enableValidation({
+  formSelector: ".form__body",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__button",
+  inactiveButtonClass: "form__button_inactive",
+  inputErrorClass: "form__input_invalid",
+  errorClass: "form__error_visible",
+});
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
@@ -55,3 +64,9 @@ function handleOverlayClick(evt) {
 }
 
 formElement.addEventListener("click", handleOverlayClick);
+
+document.addEventListener("keyup", (evt) => {
+  if (evt.key === "Escape") {
+    formElement.classList.remove("form_visible");
+  }
+});

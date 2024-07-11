@@ -59,7 +59,6 @@
 .card-form__data {
   display: flex;
   flex-direction: column;
-  gap: 29.74px;
 }
 
 .card-form__input {
@@ -69,8 +68,31 @@
   padding-bottom: 13px;
 }
 
+.card-form__input_invalid {
+  border-color: red;
+}
+
 .card-form__input::placeholder {
   color: #000;
+}
+
+.card-form__error {
+  opacity: 0;
+  min-height: 14.52px;
+  font-size: 12px;
+  line-height: 14.52px;
+  font-weight: 400;
+  color: red;
+  margin-top: 5px;
+  margin-bottom: 13px;
+}
+
+.card-form__error:last-child {
+  margin-bottom: 0;
+}
+
+.card-form__error_visible {
+  opacity: 1;
 }
 
 .card-form__button {
@@ -91,6 +113,15 @@
 .card-form__button:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+.card-form__button_inactive {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  user-select: none;
 }
 
 @media screen and (max-width: 768px) {
