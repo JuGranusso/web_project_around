@@ -1,3 +1,5 @@
+import { openPopup } from "./popup.js";
+
 const likeSrc = "assets/like.svg";
 const likedSrc = "assets/liked.svg";
 const initialCards = [
@@ -30,7 +32,7 @@ const initialCards = [
 const cardTemplate = document.querySelector("#grid-card_template").content;
 const photoGrid = document.querySelector(".photo-grid");
 
-function createNewCard(name, link) {
+export function createNewCard(name, link) {
   const newCard = cardTemplate.cloneNode(true);
   const img = newCard.querySelector(".photo-grid__photo");
   img.src = link;

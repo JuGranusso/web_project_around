@@ -1,7 +1,7 @@
 const popupElement = document.querySelector(".popup");
 const popupExit = document.querySelector(".popup__exit");
 
-function openPopup(name, link) {
+export function openPopup(name, link) {
   const popupPhoto = document.querySelector(".popup__photo");
   popupPhoto.src = link;
   popupPhoto.alt = name;
@@ -19,4 +19,10 @@ popupElement.addEventListener("click", (event) => {
 
 popupExit.addEventListener("click", () => {
   popupElement.classList.remove("popup_visible");
+});
+
+document.addEventListener("keyup", (evt) => {
+  if (evt.key === "Escape") {
+    popupElement.classList.remove("popup_visible");
+  }
 });

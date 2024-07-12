@@ -1,3 +1,5 @@
+import { enableValidation } from "./validate.js";
+
 const formBodyElement = document.querySelector(".form__body");
 const formElement = document.querySelector(".form");
 

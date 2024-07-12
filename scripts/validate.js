@@ -48,7 +48,7 @@ const setEventListeners = (config) => {
   });
 };
 
-const enableValidation = (config) => {
+export const enableValidation = (config) => {
   const formElement = document.querySelector(config.formSelector);
 
   formElement.addEventListener("submit", function (evt) {

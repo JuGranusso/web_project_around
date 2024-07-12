@@ -1,3 +1,6 @@
+import { enableValidation } from "./validate.js";
+import { createNewCard } from "./photo-cards.js";
+
 const cardFormBodyElement = document.querySelector(".card-form__body");
 const cardFormElement = document.querySelector(".card-form");
 const titleInput = document.querySelector("#title");
