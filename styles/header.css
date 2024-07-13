@@ -10,6 +10,13 @@
   padding-bottom: 41px;
 }
 
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .header {
+    padding-left: 27px;
+    box-sizing: border-box;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .header {
     padding-top: 28px;
