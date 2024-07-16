@@ -1,4 +1,5 @@
 .form {
+  overflow-x: hidden;
   visibility: hidden;
   position: absolute;
   width: 100%;
@@ -107,6 +108,14 @@
 }
 
 @media screen and (max-width: 768px) {
+  .form__card {
+    max-width: 430px;
+    margin-left: 19px;
+    margin-right: 19px;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
   .form__exit {
     width: 26px;
     height: 26px;
@@ -150,10 +159,6 @@
     line-height: 21.78px;
     margin-top: 25px;
     margin-bottom: 76px;
-  }
-
-  .form__data {
-    gap: 30px;
   }
 
   .form__input {
