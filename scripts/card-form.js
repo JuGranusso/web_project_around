@@ -1,5 +1,5 @@
 import { enableValidation } from "./validate.js";
-import { createNewCard } from "./photo-cards.js";
+import { Card } from "./Card.js";
 
 const cardFormBodyElement = document.querySelector(".card-form__body");
 const cardFormElement = document.querySelector(".card-form");
@@ -42,7 +42,7 @@ exitCardButtonElement.addEventListener("click", handleExitCardButtonClick);
 function handleSubmitButtonClick(evt) {
   evt.preventDefault();
 
-  createNewCard(titleInput.value, linkInput.value);
+  new Card(titleInput.value, linkInput.value).createNewCard();
 
   titleInput.value = "";
   linkInput.value = "";
