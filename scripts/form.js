@@ -1,16 +1,20 @@
-import { enableValidation } from "./validate.js";
+import { FormValidator } from "./FormValidator.js";
 
 const formBodyElement = document.querySelector(".form__body");
 const formElement = document.querySelector(".form");
 
-enableValidation({
-  formSelector: ".form__body",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__button",
-  inactiveButtonClass: "form__button_inactive",
-  inputErrorClass: "form__input_invalid",
-  errorClass: "form__error_visible",
-});
+const formValidator = new FormValidator(
+  {
+    inputSelector: ".form__input",
+    submitButtonSelector: ".form__button",
+    inactiveButtonClass: "form__button_inactive",
+    inputErrorClass: "form__input_invalid",
+    errorClass: "form__error_visible",
+  },
+  formElement
+);
+
+formValidator.enableValidation();
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
