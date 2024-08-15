@@ -32,14 +32,16 @@ const initialCards = [
 const photoGrid = document.querySelector(".photo-grid");
 
 export class Card {
-  constructor (name, link, templateSelector = "#grid-card_template") {
-    this.name = name
-    this.link = link
-    this.templateSelector = templateSelector
+  constructor(name, link, templateSelector = "#grid-card_template") {
+    this.name = name;
+    this.link = link;
+    this.templateSelector = templateSelector;
   }
 
   _cloneTemplate() {
-    return document.querySelector(this.templateSelector).content.cloneNode(true);
+    return document
+      .querySelector(this.templateSelector)
+      .content.cloneNode(true);
   }
 
   _handleLikeClick(event) {
@@ -55,12 +57,12 @@ export class Card {
   }
 
   _handlePhotoClick() {
-    console.log('adwwadawd', this)
+    console.log("adwwadawd", this);
     openPopup(this.name, this.link);
   }
 
   createNewCard() {
-    const newCard = this._cloneTemplate()
+    const newCard = this._cloneTemplate();
     const img = newCard.querySelector(".photo-grid__photo");
     img.src = this.link;
     img.alt = this.name;
@@ -75,10 +77,9 @@ export class Card {
       .querySelector(".photo-grid__delete")
       .addEventListener("click", this._handleDeleteClick);
 
-    newCard.querySelector(".photo-grid__photo").addEventListener(
-      "click",
-      event => this._handlePhotoClick(event)
-    );
+    newCard
+      .querySelector(".photo-grid__photo")
+      .addEventListener("click", (event) => this._handlePhotoClick(event));
 
     photoGrid.prepend(newCard);
   }

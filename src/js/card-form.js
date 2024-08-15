@@ -8,15 +8,18 @@ const addCardButton = document.querySelector(".profile__add");
 const exitCardButtonElement = document.querySelector(".card-form__exit");
 const submitButton = document.querySelector(".card-form__button");
 
-const formValidator = new FormValidator({
-  inputSelector: ".card-form__input",
-  submitButtonSelector: ".card-form__button",
-  inactiveButtonClass: "card-form__button_inactive",
-  inputErrorClass: "card-form__input_invalid",
-  errorClass: "card-form__error_visible",
-}, cardFormElement)
+const formValidator = new FormValidator(
+  {
+    inputSelector: ".card-form__input",
+    submitButtonSelector: ".card-form__button",
+    inactiveButtonClass: "card-form__button_inactive",
+    inputErrorClass: "card-form__input_invalid",
+    errorClass: "card-form__error_visible",
+  },
+  cardFormElement
+);
 
-formValidator.enableValidation()
+formValidator.enableValidation();
 
 function handleAddCardButtonClick(evt) {
   cardFormElement.classList.add("card-form_visible");
