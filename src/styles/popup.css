@@ -1,4 +1,4 @@
-.popup {
+.img-popup {
   visibility: hidden;
   position: fixed;
   top: 0;
@@ -11,15 +11,15 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.popup_visible {
+.img-popup_visible {
   visibility: visible;
 }
 
-.popup__container {
+.img-popup__container {
   position: relative;
 }
 
-.popup__exit {
+.img-popup__exit {
   position: absolute;
   border: none;
   background-color: rgba(0, 0, 0, 0);
@@ -29,17 +29,17 @@
   right: -35px;
 }
 
-.popup__exit:hover {
+.img-popup__exit:hover {
   opacity: 0.5;
   cursor: pointer;
 }
 
-.popup__photo {
+.img-popup__photo {
   max-width: 75vw;
   max-height: 75vh;
 }
 
-.popup__caption {
+.img-popup__caption {
   color: white;
   font-size: 12px;
   line-height: 14.52px;

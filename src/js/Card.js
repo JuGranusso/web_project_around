@@ -1,7 +1,7 @@
-import { openPopup } from "./popup.js";
+import { PopupWithImage } from "./PopupWithImage.js";
+import likeIcon from "../assets/like.svg";
+import likedIcon from "../assets/liked.svg";
 
-const likeSrc = "assets/like.svg";
-const likedSrc = "assets/liked.svg";
 const initialCards = [
   {
     name: "Vale de Yosemite",
@@ -31,6 +31,9 @@ const initialCards = [
 
 const photoGrid = document.querySelector(".photo-grid");
 
+const imgPopup = new PopupWithImage("img-popup");
+imgPopup.setEventListeners();
+
 export class Card {
   constructor(name, link, templateSelector = "#grid-card_template") {
     this.name = name;
@@ -45,10 +48,10 @@ export class Card {
   }
 
   _handleLikeClick(event) {
-    if (event.target.src.includes(likeSrc)) {
-      event.target.src = likedSrc;
+    if (event.target.src.includes(likeIcon)) {
+      event.target.src = likedIcon;
     } else {
-      event.target.src = likeSrc;
+      event.target.src = likedIcon;
     }
   }
 
@@ -57,8 +60,7 @@ export class Card {
   }
 
   _handlePhotoClick() {
-    console.log("adwwadawd", this);
-    openPopup(this.name, this.link);
+    imgPopup.open(this.name, this.link);
   }
 
   createNewCard() {

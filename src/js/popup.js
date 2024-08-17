@@ -1,28 +1,44 @@
-const popupElement = document.querySelector(".popup");
-const popupExit = document.querySelector(".popup__exit");
+export class Popup {
+  constructor(popupClass) {
+    this.popupClass = popupClass;
+    this.popupVisibleClass = `${this.popupClass}_visible`;
+    this.popup = document.querySelector(`.${popupClass}`);
+    this.popupCloseButton = this.popup.querySelector(
+      `.${this.popupClass}__exit`
+    );
+  }
 
-export function openPopup(name, link) {
-  const popupPhoto = document.querySelector(".popup__photo");
-  popupPhoto.src = link;
-  popupPhoto.alt = name;
+  open() {
+    this.popup.classList.add(this.popupVisibleClass);
+  }
 
-  document.querySelector(".popup__caption").textContent = name;
+  close() {
+    this.popup.classList.remove(this.popupVisibleClass);
+  }
 
-  popupElement.classList.add("popup_visible");
+  _handleEscClose(event) {
+    if (event.key === "Escape") {
+      this.close();
+    }
+  }
+
+  _handleOverlayClick(event) {
+    event.stopPropagation();
+    if (event.target === this.popup) {
+      // this is the overlay element
+      this.close();
+    }
+  }
+
+  setEventListeners() {
+    this.popup.addEventListener("click", (event) => {
+      this._handleOverlayClick(event);
+    });
+
+    document.addEventListener("keyup", (evt) => {
+      this._handleEscClose(evt);
+    });
+
+    this.popupCloseButton.addEventListener("click", () => this.close());
+  }
 }
-
-popupElement.addEventListener("click", (event) => {
-  if (event.target === popupElement) {
-    popupElement.classList.remove("popup_visible");
-  }
-});
-
-popupExit.addEventListener("click", () => {
-  popupElement.classList.remove("popup_visible");
-});
-
-document.addEventListener("keyup", (evt) => {
-  if (evt.key === "Escape") {
-    popupElement.classList.remove("popup_visible");
-  }
-});
