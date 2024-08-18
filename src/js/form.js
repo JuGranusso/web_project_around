@@ -1,20 +1,20 @@
 import { FormValidator } from "./FormValidator.js";
 import { PopupWithForm } from "./PopupWithForm.js";
+import { UserInfo } from "./UserInfo.js";
+
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  subtitleSelector: ".profile__subtitle",
+});
 
 const formElement = document.querySelector(".form");
 const editButtonElement = document.querySelector(".profile__edit");
 
 const onSubmitForm = ({ nome, profissao }) => {
-  const profileName = document.querySelector(".profile__name");
-  const profileSubtitle = document.querySelector(".profile__subtitle");
-
-  if (nome !== "") {
-    profileName.textContent = nome;
-  }
-
-  if (profissao !== "") {
-    profileSubtitle.textContent = profissao;
-  }
+  userInfo.setUserInfo({
+    name: nome,
+    subtitle: profissao,
+  });
 };
 
 const form = new PopupWithForm("form", onSubmitForm);
@@ -33,13 +33,12 @@ const formValidator = new FormValidator(
 
 formValidator.enableValidation();
 
-function handleEditButtonClick(evt) {
-  const profileName = document.querySelector(".profile__name");
-  const profileSubtitle = document.querySelector(".profile__subtitle");
+function handleEditButtonClick() {
+  const { name, subtitle } = userInfo.getUserInfo();
 
   form.open({
-    nome: profileName.textContent,
-    profissao: profileSubtitle.textContent,
+    nome: name,
+    profissao: subtitle,
   });
 }
 editButtonElement.addEventListener("click", handleEditButtonClick);
