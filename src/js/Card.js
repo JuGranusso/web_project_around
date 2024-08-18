@@ -34,11 +34,16 @@ const photoGrid = document.querySelector(".photo-grid");
 const imgPopup = new PopupWithImage("img-popup");
 imgPopup.setEventListeners();
 
+const openPopup = (name, link) => {
+  imgPopup.open(name, link);
+};
+
 export class Card {
-  constructor(name, link, templateSelector = "#grid-card_template") {
+  constructor(name, link, openPopup, templateSelector = "#grid-card_template") {
     this.name = name;
     this.link = link;
     this.templateSelector = templateSelector;
+    this.openPopup = openPopup;
   }
 
   _cloneTemplate() {
@@ -60,7 +65,7 @@ export class Card {
   }
 
   _handlePhotoClick() {
-    imgPopup.open(this.name, this.link);
+    this.openPopup(this.name, this.link);
   }
 
   createNewCard() {
@@ -88,5 +93,5 @@ export class Card {
 }
 
 initialCards.forEach((initialCard) =>
-  new Card(initialCard.name, initialCard.link).createNewCard()
+  new Card(initialCard.name, initialCard.link, openPopup).createNewCard()
 );
