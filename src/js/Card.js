@@ -1,33 +1,7 @@
 import { PopupWithImage } from "./PopupWithImage.js";
+import { api } from "./Api.js";
 import likeIcon from "../assets/like.svg";
 import likedIcon from "../assets/liked.svg";
-
-const initialCards = [
-  {
-    name: "Vale de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-  },
-  {
-    name: "Montanhas Carecas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
-  },
-  {
-    name: "Parque Nacional da Vanoise ",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
-  },
-];
 
 const photoGrid = document.querySelector(".photo-grid");
 
@@ -92,6 +66,15 @@ export class Card {
   }
 }
 
-initialCards.forEach((initialCard) =>
-  new Card(initialCard.name, initialCard.link, openPopup).createNewCard()
-);
+api
+  .getInitialCards()
+  .then((cards) => {
+    console.log(cards);
+    cards.forEach((card) =>
+      new Card(card.name, card.link, openPopup).createNewCard()
+    );
+  })
+  .catch((err) => {
+    console.error(err);
+    alert(err);
+  });
