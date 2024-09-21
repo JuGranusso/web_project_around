@@ -1,11 +1,6 @@
 import { FormValidator } from "./FormValidator.js";
 import { PopupWithForm } from "./PopupWithForm.js";
-import { UserInfo } from "./UserInfo.js";
-
-const userInfo = new UserInfo({
-  nameSelector: ".profile__name",
-  subtitleSelector: ".profile__subtitle",
-});
+import { userInfo } from "./UserInfo.js";
 
 const formElement = document.querySelector(".form");
 const editButtonElement = document.querySelector(".profile__edit");

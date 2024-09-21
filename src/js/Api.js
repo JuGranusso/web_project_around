@@ -8,8 +8,8 @@ class Api {
     return `${this.baseUrl}/${endpoint}`;
   }
 
-  getInitialCards() {
-    return fetch(this._getUrl("cards"), {
+  _fetch(endpoint) {
+    return fetch(this._getUrl(endpoint), {
       headers: this.headers,
     }).then((res) => {
       if (res.ok) {
@@ -20,7 +20,13 @@ class Api {
     });
   }
 
-  // outros métodos para trabalhar com a API
+  getInitialCards() {
+    return this._fetch("cards");
+  }
+
+  getUserInfo() {
+    return this._fetch("users/me");
+  }
 }
 
 export const api = new Api({

@@ -69,7 +69,6 @@ export class Card {
 api
   .getInitialCards()
   .then((cards) => {
-    console.log(cards);
     cards.forEach((card) =>
       new Card(card.name, card.link, openPopup).createNewCard()
     );

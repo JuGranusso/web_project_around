@@ -7,7 +7,9 @@
 
 .profile__photo {
   border-radius: 500px;
-  max-width: 120px;
+  width: 120px;
+  aspect-ratio: 1;
+  object-fit: cover;
 }
 
 .profile__editor {
