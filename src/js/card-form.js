@@ -1,3 +1,4 @@
+import { api } from "./Api.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import { PopupWithForm } from "./PopupWithForm.js";
@@ -6,7 +7,15 @@ const cardFormElement = document.querySelector(".card-form");
 const addCardButton = document.querySelector(".profile__add");
 
 const onSubmitForm = ({ title, link }) => {
-  new Card(title, link).createNewCard();
+  return api
+    .createNewCard({ name: title, link })
+    .then(() => {
+      new Card(title, link).createNewCard();
+    })
+    .catch((err) => {
+      console.error(err);
+      alert(err);
+    });
 };
 
 const cardForm = new PopupWithForm("card-form", onSubmitForm);

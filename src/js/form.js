@@ -1,3 +1,4 @@
+import { api } from "./Api.js";
 import { FormValidator } from "./FormValidator.js";
 import { PopupWithForm } from "./PopupWithForm.js";
 import { userInfo } from "./UserInfo.js";
@@ -5,11 +6,26 @@ import { userInfo } from "./UserInfo.js";
 const formElement = document.querySelector(".form");
 const editButtonElement = document.querySelector(".profile__edit");
 
-const onSubmitForm = ({ nome, profissao }) => {
-  userInfo.setUserInfo({
-    name: nome,
-    subtitle: profissao,
+const delay = (duration) =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, duration);
   });
+
+const onSubmitForm = ({ nome, profissao }) => {
+  return api
+    .editUserInfo({ name: nome, about: profissao })
+    .then(() => {
+      userInfo.setUserInfo({
+        name: nome,
+        subtitle: profissao,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+      alert(err);
+    });
 };
 
 const form = new PopupWithForm("form", onSubmitForm);

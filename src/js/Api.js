@@ -8,9 +8,11 @@ class Api {
     return `${this.baseUrl}/${endpoint}`;
   }
 
-  _fetch(endpoint) {
+  _fetch(endpoint, method = "GET", body) {
     return fetch(this._getUrl(endpoint), {
       headers: this.headers,
+      method,
+      body,
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -26,6 +28,16 @@ class Api {
 
   getUserInfo() {
     return this._fetch("users/me");
+  }
+
+  editUserInfo({ name, about }) {
+    const body = JSON.stringify({ name, about });
+    return this._fetch("users/me", "PATCH", body);
+  }
+
+  createNewCard({ name, link }) {
+    const body = JSON.stringify({ name, link });
+    return this._fetch("cards", "POST", body);
   }
 }
 
