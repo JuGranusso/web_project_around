@@ -2,6 +2,8 @@ class Api {
   constructor({ baseUrl, headers }) {
     this.baseUrl = baseUrl;
     this.headers = headers;
+    this.userId = "";
+    this._initialize();
   }
 
   _getUrl(endpoint) {
@@ -22,8 +24,31 @@ class Api {
     });
   }
 
+  _initialize() {
+    return this.getUserInfo().then(({ _id }) => {
+      this.userId = _id;
+    });
+  }
+
+  _addLikeDataToCard(card) {
+    const isLiked = card.likes.some(
+      (likeOwner) => likeOwner._id === this.userId
+    );
+    const likeCount = card.likes.length;
+
+    return {
+      ...card,
+      isLiked,
+      likeCount,
+    };
+  }
+
   getInitialCards() {
-    return this._fetch("cards");
+    return this._initialize().then(() =>
+      this._fetch("cards").then((cards) =>
+        cards.reverse().map((card) => this._addLikeDataToCard(card))
+      )
+    );
   }
 
   getUserInfo() {
@@ -38,6 +63,18 @@ class Api {
   createNewCard({ name, link }) {
     const body = JSON.stringify({ name, link });
     return this._fetch("cards", "POST", body);
+  }
+
+  likeCard(cardId) {
+    return this._fetch(`cards/likes/${cardId}`, "PUT").then((card) =>
+      this._addLikeDataToCard(card)
+    );
+  }
+
+  unlikeCard(cardId) {
+    return this._fetch(`cards/likes/${cardId}`, "DELETE").then((card) =>
+      this._addLikeDataToCard(card)
+    );
   }
 }
 

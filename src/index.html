@@ -150,11 +150,14 @@
         <img class="photo-grid__photo" />
         <div class="photo-grid__discription">
           <p class="photo-grid__name"></p>
-          <img
-            class="photo-grid__like"
-            src="<%=require('./assets/like.svg')%>"
-            alt="botão para curtir"
-          />
+          <div class="photo-grid__likes">
+            <img
+              class="photo-grid__like"
+              src="<%=require('./assets/like.svg')%>"
+              alt="botão para curtir"
+            />
+            <span class="photo-grid__like-count"></span>
+          </div>
         </div>
       </div>
     </template>

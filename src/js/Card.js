@@ -13,11 +13,19 @@ const openPopup = (name, link) => {
 };
 
 export class Card {
-  constructor(name, link, openPopup, templateSelector = "#grid-card_template") {
+  constructor(
+    { name, link, likeCount, isLiked },
+    openPopup,
+    onLikeClick,
+    templateSelector = "#grid-card_template"
+  ) {
     this.name = name;
     this.link = link;
+    this.likeCount = likeCount;
+    this.isLiked = isLiked;
     this.templateSelector = templateSelector;
     this.openPopup = openPopup;
+    this.onLikeClick = onLikeClick;
   }
 
   _cloneTemplate() {
@@ -26,12 +34,36 @@ export class Card {
       .content.cloneNode(true);
   }
 
-  _handleLikeClick(event) {
-    if (event.target.src.includes(likeIcon)) {
-      event.target.src = likedIcon;
+  _setLikeCount(cardElm) {
+    const likeCount = cardElm.querySelector(".photo-grid__like-count");
+    const showClass = "photo-grid__like-count_show";
+
+    if (this.likeCount > 0) {
+      likeCount.textContent = this.likeCount;
+      likeCount.classList.add(showClass);
     } else {
-      event.target.src = likedIcon;
+      likeCount.textContent = "";
+      likeCount.classList.remove(showClass);
     }
+  }
+
+  _setIsLiked(cardElm) {
+    const likeButton = cardElm.querySelector(".photo-grid__like");
+
+    likeButton.src = this.isLiked ? likedIcon : likeIcon;
+  }
+
+  _handleLikeClick(event) {
+    const likeButton = event.target;
+    const isLiking = likeButton.src.includes(likeIcon);
+    const cardElm = likeButton.closest(".photo-grid__card");
+
+    this.onLikeClick(isLiking).then(({ likeCount, isLiked }) => {
+      this.likeCount = likeCount;
+      this.isLiked = isLiked;
+      this._setIsLiked(cardElm);
+      this._setLikeCount(cardElm);
+    });
   }
 
   _handleDeleteClick(event) {
@@ -52,7 +84,7 @@ export class Card {
 
     newCard
       .querySelector(".photo-grid__like")
-      .addEventListener("click", this._handleLikeClick);
+      .addEventListener("click", (event) => this._handleLikeClick(event));
 
     newCard
       .querySelector(".photo-grid__delete")
@@ -62,6 +94,9 @@ export class Card {
       .querySelector(".photo-grid__photo")
       .addEventListener("click", (event) => this._handlePhotoClick(event));
 
+    this._setLikeCount(newCard);
+    this._setIsLiked(newCard);
+
     photoGrid.prepend(newCard);
   }
 }
@@ -69,9 +104,17 @@ export class Card {
 api
   .getInitialCards()
   .then((cards) => {
-    cards.forEach((card) =>
-      new Card(card.name, card.link, openPopup).createNewCard()
-    );
+    cards.forEach((card) => {
+      const handleLikeClick = (isLiking) => {
+        if (isLiking) {
+          return api.likeCard(card._id);
+        } else {
+          return api.unlikeCard(card._id);
+        }
+      };
+
+      new Card(card, openPopup, handleLikeClick).createNewCard();
+    });
   })
   .catch((err) => {
     console.error(err);

@@ -57,6 +57,13 @@
   white-space: nowrap;
 }
 
+.photo-grid__likes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .photo-grid__like {
   margin-left: auto;
 }
@@ -64,6 +71,15 @@
 .photo-grid__like:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+.photo-grid__like-count {
+  display: none;
+}
+
+.photo-grid__like-count_show {
+  display: block;
+  margin-top: 4px;
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
