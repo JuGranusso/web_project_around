@@ -1,24 +1,16 @@
 import { api } from "./Api.js";
-import { Card } from "./Card.js";
+import { reloadCards } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import { PopupWithForm } from "./PopupWithForm.js";
-import { PopupWithImage } from "./PopupWithImage.js";
 
 const cardFormElement = document.querySelector(".card-form");
 const addCardButton = document.querySelector(".profile__add");
-
-const imgPopup = new PopupWithImage("img-popup");
-imgPopup.setEventListeners();
-
-const openPopup = (name, link) => {
-  imgPopup.open(name, link);
-};
 
 const onSubmitForm = ({ title, link }) => {
   return api
     .createNewCard({ name: title, link })
     .then(() => {
-      new Card({ name: title, link }, openPopup).createNewCard();
+      return reloadCards();
     })
     .catch((err) => {
       console.error(err);

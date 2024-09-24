@@ -2,20 +2,22 @@ import { PopupWithImage } from "./PopupWithImage.js";
 import { api } from "./Api.js";
 import likeIcon from "../assets/like.svg";
 import likedIcon from "../assets/liked.svg";
+import { PopupWithForm } from "./PopupWithForm.js";
 
 const photoGrid = document.querySelector(".photo-grid");
 
 const imgPopup = new PopupWithImage("img-popup");
 imgPopup.setEventListeners();
 
-const openPopup = (name, link) => {
+const openImagePopup = (name, link) => {
   imgPopup.open(name, link);
 };
 
 export class Card {
   constructor(
     { name, link, likeCount, isLiked },
-    openPopup,
+    openImagePopup,
+    openDeletePopup,
     onLikeClick,
     templateSelector = "#grid-card_template"
   ) {
@@ -24,7 +26,8 @@ export class Card {
     this.likeCount = likeCount;
     this.isLiked = isLiked;
     this.templateSelector = templateSelector;
-    this.openPopup = openPopup;
+    this.openImagePopup = openImagePopup;
+    this.openDeletePopup = openDeletePopup;
     this.onLikeClick = onLikeClick;
   }
 
@@ -58,20 +61,25 @@ export class Card {
     const isLiking = likeButton.src.includes(likeIcon);
     const cardElm = likeButton.closest(".photo-grid__card");
 
-    this.onLikeClick(isLiking).then(({ likeCount, isLiked }) => {
-      this.likeCount = likeCount;
-      this.isLiked = isLiked;
-      this._setIsLiked(cardElm);
-      this._setLikeCount(cardElm);
-    });
+    this.onLikeClick(isLiking)
+      .then(({ likeCount, isLiked }) => {
+        this.likeCount = likeCount;
+        this.isLiked = isLiked;
+        this._setIsLiked(cardElm);
+        this._setLikeCount(cardElm);
+      })
+      .catch((err) => {
+        console.error(err);
+        alert(err);
+      });
   }
 
-  _handleDeleteClick(event) {
-    event.target.parentElement.remove();
+  _handleDeleteClick() {
+    this.openDeletePopup();
   }
 
   _handlePhotoClick() {
-    this.openPopup(this.name, this.link);
+    this.openImagePopup(this.name, this.link);
   }
 
   createNewCard() {
@@ -86,9 +94,14 @@ export class Card {
       .querySelector(".photo-grid__like")
       .addEventListener("click", (event) => this._handleLikeClick(event));
 
-    newCard
-      .querySelector(".photo-grid__delete")
-      .addEventListener("click", this._handleDeleteClick);
+    if (this.openDeletePopup) {
+      const deleteButton = newCard.querySelector(".photo-grid__delete");
+
+      deleteButton.addEventListener("click", (event) =>
+        this._handleDeleteClick(event)
+      );
+      deleteButton.classList.add("photo-grid__delete_show");
+    }
 
     newCard
       .querySelector(".photo-grid__photo")
@@ -101,22 +114,47 @@ export class Card {
   }
 }
 
-api
-  .getInitialCards()
-  .then((cards) => {
-    cards.forEach((card) => {
-      const handleLikeClick = (isLiking) => {
-        if (isLiking) {
-          return api.likeCard(card._id);
-        } else {
-          return api.unlikeCard(card._id);
-        }
-      };
+export const reloadCards = () => {
+  return api
+    .getCards()
+    .then((cards) => {
+      cards.forEach((card) => {
+        const handleLikeClick = (isLiking) => {
+          if (isLiking) {
+            return api.likeCard(card._id);
+          } else {
+            return api.unlikeCard(card._id);
+          }
+        };
 
-      new Card(card, openPopup, handleLikeClick).createNewCard();
+        let openDeletePopup;
+
+        if (card.owner._id === api.userId) {
+          const handleDeleteClick = () => {
+            return api.deleteCard(card._id).then(() => reloadCards());
+          };
+
+          const deletePopup = new PopupWithForm(
+            "delete-form",
+            handleDeleteClick
+          );
+          deletePopup.setEventListeners();
+
+          openDeletePopup = () => deletePopup.open();
+        }
+
+        new Card(
+          card,
+          openImagePopup,
+          openDeletePopup,
+          handleLikeClick
+        ).createNewCard();
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+      alert(err);
     });
-  })
-  .catch((err) => {
-    console.error(err);
-    alert(err);
-  });
+};
+
+reloadCards();

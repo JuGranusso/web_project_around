@@ -17,6 +17,7 @@
 }
 
 .photo-grid__delete {
+  visibility: hidden;
   position: absolute;
   top: 18px;
   right: 15px;
@@ -25,6 +26,10 @@
 .photo-grid__delete:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+.photo-grid__delete_show {
+  visibility: visible;
 }
 
 .photo-grid__photo {

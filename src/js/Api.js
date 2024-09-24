@@ -43,7 +43,7 @@ class Api {
     };
   }
 
-  getInitialCards() {
+  getCards() {
     return this._initialize().then(() =>
       this._fetch("cards").then((cards) =>
         cards.reverse().map((card) => this._addLikeDataToCard(card))
@@ -63,6 +63,10 @@ class Api {
   createNewCard({ name, link }) {
     const body = JSON.stringify({ name, link });
     return this._fetch("cards", "POST", body);
+  }
+
+  deleteCard(cardId) {
+    return this._fetch(`cards/${cardId}`, "DELETE");
   }
 
   likeCard(cardId) {
