@@ -60,6 +60,11 @@ class Api {
     return this._fetch("users/me", "PATCH", body);
   }
 
+  editUserAvatar({ avatar }) {
+    const body = JSON.stringify({ avatar });
+    return this._fetch("users/me/avatar", "PATCH", body);
+  }
+
   createNewCard({ name, link }) {
     const body = JSON.stringify({ name, link });
     return this._fetch("cards", "POST", body);

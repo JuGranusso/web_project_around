@@ -1,0 +1,202 @@
+.avatar-form {
+  overflow-x: hidden;
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.avatar-form_visible {
+  visibility: visible;
+}
+
+.avatar-form__card {
+  background-color: #fff;
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding-left: 36px;
+  padding-right: 36px;
+  position: relative;
+}
+
+.avatar-form__exit {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -40px;
+  right: -35px;
+}
+
+.avatar-form__exit:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.avatar-form__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar-form__label {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  text-align: left;
+  margin-top: 34px;
+  margin-bottom: 54px;
+  color: #000;
+}
+
+.avatar-form__data {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar-form__input {
+  border: 0;
+  border-bottom: 1px solid;
+  border-color: rgba(0, 0, 0, 0.2);
+  padding-bottom: 13px;
+}
+
+.avatar-form__input_invalid {
+  border-color: red;
+}
+
+.avatar-form__input::placeholder {
+  color: #000;
+}
+
+.avatar-form__error {
+  opacity: 0;
+  min-height: 14.52px;
+  font-size: 12px;
+  line-height: 14.52px;
+  font-weight: 400;
+  color: red;
+  margin-top: 5px;
+  margin-bottom: 13px;
+}
+
+.avatar-form__error:last-child {
+  margin-bottom: 0;
+}
+
+.avatar-form__error_visible {
+  opacity: 1;
+}
+
+.avatar-form__button {
+  margin-top: 48px;
+  margin-bottom: 36.51px;
+  color: #fff;
+  background-color: #000;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
+  text-align: center;
+  max-width: 358px;
+  width: 100%;
+  padding: 16.07px;
+  align-self: center;
+  border: none;
+}
+
+.avatar-form__button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.avatar-form__button_inactive {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  user-select: none;
+}
+
+@media screen and (max-width: 768px) {
+  .avatar-form__card {
+    max-width: 430px;
+    margin-left: 19px;
+    margin-right: 19px;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .avatar-form__exit {
+    width: 26px;
+    height: 26px;
+    top: -50px;
+    right: 5px;
+  }
+
+  .avatar-form__exit > img {
+    width: 26px;
+    height: 26px;
+    top: -50px;
+    right: 15px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .avatar-form__card {
+    width: 100%;
+    margin-left: 19px;
+    margin-right: 19px;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .avatar-form__exit {
+    width: 26px;
+    height: 26px;
+    top: -50px;
+    right: 5px;
+  }
+
+  .avatar-form__exit > img {
+    width: 26px;
+    height: 26px;
+    top: -50px;
+    right: 15px;
+  }
+
+  .avatar-form__label {
+    font-size: 18px;
+    line-height: 21.78px;
+    margin-top: 25px;
+    margin-bottom: 76px;
+  }
+
+  .avatar-form__input {
+    border: 0;
+    border-bottom: 1px solid;
+    border-color: rgba(0, 0, 0, 0.2);
+    padding-bottom: 13px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    text-align: left;
+  }
+
+  .avatar-form__button {
+    margin-top: 46px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    line-height: 16.94px;
+    max-width: 238px;
+    padding: 14px;
+  }
+}
